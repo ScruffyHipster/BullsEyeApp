@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import QuartzCore
 
 class ViewController: UIViewController {
     
@@ -59,6 +60,13 @@ class ViewController: UIViewController {
     }
     
     func startNewRound() {
+        let transition = CATransition()
+        transition.type = kCATransitionFade
+        transition.duration = 1
+        transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+        view.layer.add(transition, forKey: nil)
+    
+        
         targetValue = 1 + Int(arc4random_uniform(100))
         sliderPositionRemain = currentValue
         slider.value = Float(currentValue)
